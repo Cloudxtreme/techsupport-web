@@ -3,5 +3,21 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
+  <display-name>Techsupport web application.</display-name>
+  <servlet>
+    <servlet-name>RequestHandler</servlet-name>
+    <servlet-class>ch.protonmail.vladyslavbond.techsupport.web.RequestHandler</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>IssueOpen</servlet-name>
+    <servlet-class>ch.protonmail.vladyslavbond.techsupport.web.IssueOpen</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RequestHandler</servlet-name>
+    <url-pattern></url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IssueOpen</servlet-name>
+    <url-pattern>/issue/open</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -1,0 +1,24 @@
+<form method='POST' action='issue/open'>
+  <fieldset>
+    <legend>
+      Form for opening issues.
+    </legend>
+    <fieldset>
+      <legend>
+        Main fields.
+      </legend>
+      <label for="party_id">
+        List of available parties.
+      </label>
+      <select id="party_id" name='party_id'>
+        ${partiesAsOptionsOfSelection}
+      </select>
+      <label  for='description'>
+        Description of an issue you are going to open.
+      </label>
+      <textarea id='description' name='description'>
+      </textarea>
+    </fieldset>
+    <input name='submit' type='submit' value='Send.' />
+  </fieldset>
+</form>
