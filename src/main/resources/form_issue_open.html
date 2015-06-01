@@ -1,4 +1,4 @@
-<form method='POST' action='issue/open'>
+<form method='POST' action='techsupport-web/issue/open'>
   <fieldset>
     <legend>
       Form for opening issues.
@@ -10,9 +10,7 @@
       <label for="party_id">
         List of available parties.
       </label>
-      <select id="party_id" name='party_id'>
-        ${partiesAsOptionsOfSelection}
-      </select>
+      ${selectParties}
       <label  for='description'>
         Description of an issue you are going to open.
       </label>

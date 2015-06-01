@@ -16,8 +16,8 @@ import ch.protonmail.vladyslavbond.techsupport.web.views.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
 
 import javax.servlet.ServletException;
 
@@ -33,7 +33,7 @@ public final class RequestHandler extends HttpServlet
     {
         try
         {
-            List<Party> parties = new ArrayList<Party> ( );
+            Set<Party> parties = new HashSet<Party> ( );
             int i = 2;
             PartyFactory partyFactory = Factories.getPartyFactory( );
             while (i > 0)
@@ -41,24 +41,11 @@ public final class RequestHandler extends HttpServlet
                 parties.add(partyFactory.getInstance(new Identificator<Party> (i)));
                 i--;
             }
-            Template partyAsSelectOptionTemplate = TemplateFactory.newInstance("party_as_select_option");
-            String partiesAsOptionsOfSelection = "";
-            for (Party party : parties)
-            {
-                partiesAsOptionsOfSelection += partyAsSelectOptionTemplate
-                    .bind("id", party.getId( ).toString( ))
-                    .bind("name", party.getName( ))
-                    .build( );
-            }
-
-            Template pageTemplate = TemplateFactory.newInstance("form_issue_open");
-            String buildedPage = pageTemplate
-                .bind("partiesAsOptionsOfSelection", partiesAsOptionsOfSelection)
-                .build( );
                 
+            HomePageView homePageView = new HomePageView (parties);
             response.setContentType("text/html");
             PrintWriter responseWriter = response.getWriter( );
-            responseWriter.write(buildedPage);
+            responseWriter.write(homePageView.getHTML( ));
         } catch (Exception e) {
             throw new ServletException ("Failure.", e);
         }

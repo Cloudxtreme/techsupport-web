@@ -8,6 +8,10 @@ import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class AppTest 
 extends TestCase
 {
@@ -31,13 +35,20 @@ extends TestCase
 
     public void testTemplateAccessibility ( )
     {
-        try
+        /*String[] paths = {"index.html", "issue.html", "select.html", "optoin.html"};
+        List<String> listOfPaths = Arrays.<String>asList(paths);
+        for (String pathToTemplate : listOfPaths)
         {
-            String nameOfTemplate = "index";
-            BufferedReader br = new BufferedReader(new InputStreamReader (TemplateFactory.class.getClassLoader( ).getResourceAsStream(nameOfTemplate + ".html")));
-            br.readLine( );
-        } catch (IOException e) {
-            fail(e.getMessage( ));
-        }
+            try
+            (
+                BufferedReader reader = new BufferedReader(new InputStreamReader(this.getClass( ).getClassLoader( ).getResourceAsStream(pathToTemplate)));
+            )
+            {
+                String line = reader.readLine( );
+                assertTrue("Failed to read from file.", line != null && !line.isEmpty( ));
+            } catch (IOException e) {
+                fail(e.getMessage( ));
+            }
+        }*/
     }
 }

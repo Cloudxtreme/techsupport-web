@@ -4,6 +4,6 @@
   <title>Home page.</title>
 </head>
 <body>
-${form}
+${message}
 </body>
 </html>
