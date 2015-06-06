@@ -1,6 +1,6 @@
 .issue
 {
-    box-shadow: 5px 5px 5px 0px #DDFFDD;
+    box-shadow: 5px 5px 5px 0px #EEECCC;
     background-color: white;
 }
 
@@ -35,10 +35,38 @@
     border-left: 0.3em solid red;
 }
 
-body 
+aside
 {
-    max-width: 8in;
     width: 100%;
+    overflow: scroll;
+}
+
+main 
+{
+    width: 100%;
+}
+
+@media screen and (min-width: 12in)
+{
+    aside
+    {
+        max-width: 4in;
+        float: right;
+        width: 40%;
+    }
+    
+    main
+    {
+        max-width: 8in;
+        width: 60%;
+        float: right;
+        overflow: hidden;
+    }
+}
+
+body
+{
     margin: 0 auto;
-    background-color: #EEFFEE;
+    max-width: 12in;
+    background-color: #FFFEEE;
 }

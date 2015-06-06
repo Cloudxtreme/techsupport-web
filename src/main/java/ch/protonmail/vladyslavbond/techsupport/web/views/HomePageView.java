@@ -22,9 +22,9 @@ implements View
             contentOfBody.add("<aside>");
             FormIssueFilteringView formView = new FormIssueFilteringView (modeSelected);
             contentOfBody.add(NativeTemplate.getInstance("form_issue_open.html").bind("idOfPartyIssuedBy", readingParty.getId( ).toString( )).build( ));
+            contentOfBody.add(formView.getHTML( ));
             contentOfBody.add("</aside>");
             contentOfBody.add("<main>");
-            contentOfBody.add(formView.getHTML( ));
             for (Issue issue : listOfIssues)
             {
                 IssueView issueView = new IssueView (issue);
