@@ -30,6 +30,10 @@ extends HttpServlet
 				response.sendRedirect(Page.LOG_IN.getPath( ));
 			}
 			String description = (String)request.getParameter("description");
+			if (description == null || description.isEmpty( ))
+			{
+				description = "Descripton is missing.";
+			}
 			IssueController issueController = Controllers.getIssueController( );
 			Issue issue = issueController.open(readingParty, description);
 			if (issue == null)
