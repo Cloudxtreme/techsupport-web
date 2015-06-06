@@ -16,6 +16,10 @@
     <servlet-name>ErrorRequestHandler</servlet-name>
     <servlet-class>ch.protonmail.vladyslavbond.techsupport.web.servlets.ErrorRequestHandler</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>IssueOpenRequestHandler</servlet-name>
+    <servlet-class>ch.protonmail.vladyslavbond.techsupport.web.servlets.IssueOpenRequestHandler</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>EntryPoint</servlet-name>
     <url-pattern></url-pattern>
@@ -27,6 +31,10 @@
   <servlet-mapping>
     <servlet-name>ErrorRequestHandler</servlet-name>
     <url-pattern>/error</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IssueOpenRequestHandler</servlet-name>
+    <url-pattern>/issue/open</url-pattern>
   </servlet-mapping>
   <!--
     Prevent the visiting of MVC Views from outside the servlet container.

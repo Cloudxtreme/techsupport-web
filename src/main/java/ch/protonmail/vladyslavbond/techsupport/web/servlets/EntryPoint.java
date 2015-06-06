@@ -47,7 +47,7 @@ public final class EntryPoint extends HttpServlet
                 IssueFilteringController issueFilteringController = Controllers.getIssueFilteringController(partyLoggedIn, modeSelected);
                 List<Issue> listOfIssues = issueFilteringController
                     .filter( );
-                HomePageView pageView = new HomePageView(listOfIssues, modeSelected);
+                HomePageView pageView = new HomePageView(partyLoggedIn, listOfIssues, modeSelected);
                 pageView.writeResponse(response);
             //} catch (ViewException e) {
                 //request.setAttribute("errorMessage", e.getMessage( ));

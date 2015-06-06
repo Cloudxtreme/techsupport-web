@@ -1,22 +1,13 @@
-<form method='POST' action='techsupport-web/issue/open'>
+<form method='POST' action='issue/open'>
+  <input type='hidden' name='party_id' value='${idOfPartyIssuedBy}' />
   <fieldset>
     <legend>
-      Form for opening issues.
+      Open new issue.
     </legend>
-    <fieldset>
-      <legend>
-        Main fields.
-      </legend>
-      <label for="party_id">
-        List of available parties.
+      <label for='description'>
+        Description of an new issue:
+        <textarea id='description' name='description'></textarea>
       </label>
-      ${selectParties}
-      <label  for='description'>
-        Description of an issue you are going to open.
-      </label>
-      <textarea id='description' name='description'>
-      </textarea>
-    </fieldset>
-    <input name='submit' type='submit' value='Send.' />
+    <input name='action' type='submit' value='Open' />
   </fieldset>
 </form>

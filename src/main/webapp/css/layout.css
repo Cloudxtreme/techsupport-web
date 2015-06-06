@@ -1,6 +1,6 @@
 .issue
 {
-    box-shadow: 10px 10px 5px 0px lightgrey;
+    box-shadow: 5px 5px 5px 0px #DDFFDD;
     background-color: white;
 }
 
@@ -11,7 +11,7 @@
 
 .issue > footer
 {
-    font-size: 50%;
+    font-size: 80%;
     color: grey;
 }
 
@@ -40,5 +40,5 @@ body
     max-width: 8in;
     width: 100%;
     margin: 0 auto;
-    background-color: #EEEEEE;
+    background-color: #EEFFEE;
 }

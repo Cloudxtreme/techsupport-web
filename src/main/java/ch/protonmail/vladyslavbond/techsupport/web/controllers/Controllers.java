@@ -29,4 +29,9 @@ extends Object
     {
         return NativeIssueFilteringController.newInstance(readingParty, modeSelected);
     }
+
+    public static IssueController getIssueController ( )
+    {
+        return NativeIssueController.INSTANCE;
+    }
 }
