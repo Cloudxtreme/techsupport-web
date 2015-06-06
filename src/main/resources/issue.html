@@ -1,9 +1,11 @@
-<article id='${id}' class='issue'>
-  <header>
-    <h2>Issue with id #${id}.</h2>
-  </header>
-  <p>${description}</p>
+<article id='${idOfIssue}' class='issue ${statusOfIssue}'>
+  <h2>Issue #${idOfIssue}.</h2>
+  <p>${descriptionOfIssue}</p>
   <footer>
-    Issued by ${issuing} at ${dateIssued}.
+      Issue opened at ${dateIssueIssuedAt} by ${nameOfPartyIssuedBy}.
   </footer>
+  <form method='GET' action='${actionOfFormNamedDiscuss}'>
+    <input type='hidden' name='issue_id' value='${idOfIssue}' />
+    <input type='submit' name='action' value='Discuss' />
+  </form>
 </article>

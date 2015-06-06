@@ -1,0 +1,15 @@
+<form method='GET' action=''>
+  <fieldset>
+    <legend>Issue filtering and sorting.</legend>
+    <label>
+      Filter by status:
+      <select name='mode'>
+        <option value='ALL' ${selectedAll}>All.</option>
+        <option value='ASSIGNED' ${selectedAssigned}>Assigned.</option>
+        <option value='CLOSED' ${selectedClosed}>Closed.</option>
+        <option value='OPEN' ${selectedOpen}>Open.</option>
+      </select>
+    </label>
+    <input type='submit' name='action' value='Filter' />
+  </fieldset>
+</form>

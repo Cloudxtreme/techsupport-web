@@ -1,7 +1,7 @@
 package ch.protonmail.vladyslavbond.techsupport.web.views;
 
 public final class ScalarView
-extends Object
+extends AbstractView
 implements View
 {
     private final String html;
@@ -28,6 +28,7 @@ implements View
     
     @Override
     public String getHTML ( )
+    throws ViewException
     {
         return new String(this.html);
     }

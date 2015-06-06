@@ -5,7 +5,7 @@ import ch.protonmail.vladyslavbond.techsupport.domain.Party;
 import java.util.Collection;
 
 public final class FormSelectView
-extends Object
+extends AbstractView
 implements View
 {
     private final String html;
@@ -50,6 +50,7 @@ implements View
     
     @Override
     public String getHTML ( )
+    throws ViewException
     {
         return new String(this.html);
     }

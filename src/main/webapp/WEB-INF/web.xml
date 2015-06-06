@@ -5,19 +5,46 @@
 <web-app>
   <display-name>Techsupport web application.</display-name>
   <servlet>
-    <servlet-name>RequestHandler</servlet-name>
-    <servlet-class>ch.protonmail.vladyslavbond.techsupport.web.RequestHandler</servlet-class>
+    <servlet-name>EntryPoint</servlet-name>
+    <servlet-class>ch.protonmail.vladyslavbond.techsupport.web.servlets.EntryPoint</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>IssueOpen</servlet-name>
-    <servlet-class>ch.protonmail.vladyslavbond.techsupport.web.IssueOpen</servlet-class>
+    <servlet-name>LogInRequestHandler</servlet-name>
+    <servlet-class>ch.protonmail.vladyslavbond.techsupport.web.servlets.LogInRequestHandler</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ErrorRequestHandler</servlet-name>
+    <servlet-class>ch.protonmail.vladyslavbond.techsupport.web.servlets.ErrorRequestHandler</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>RequestHandler</servlet-name>
+    <servlet-name>EntryPoint</servlet-name>
     <url-pattern></url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>IssueOpen</servlet-name>
-    <url-pattern>/issue/open</url-pattern>
+    <servlet-name>LogInRequestHandler</servlet-name>
+    <url-pattern>/login</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ErrorRequestHandler</servlet-name>
+    <url-pattern>/error</url-pattern>
+  </servlet-mapping>
+  <!--
+    Prevent the visiting of MVC Views from outside the servlet container.
+    RequestDispatcher.forward/include should and will still work.
+    Removing this may open security holes!
+  -->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>JSP.</web-resource-name>
+      <url-pattern>*.jsp</url-pattern>
+    </web-resource-collection>
+    <web-resource-collection>
+      <web-resource-name>HTML documents.</web-resource-name>
+      <url-pattern>*.html</url-pattern>
+      <url-pattern>*.htm</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <!-- Nobody is allowed to visit these -->
+    </auth-constraint>
+  </security-constraint>
 </web-app>

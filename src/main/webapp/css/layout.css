@@ -1,0 +1,44 @@
+.issue
+{
+    box-shadow: 10px 10px 5px 0px lightgrey;
+    background-color: white;
+}
+
+.issue > *
+{
+    margin-left: 1em;
+}
+
+.issue > footer
+{
+    font-size: 50%;
+    color: grey;
+}
+
+.issue > form
+{
+    text-align: right;
+}
+
+.issue.ASSIGNED
+{
+    border-left: 0.3em solid green;
+}
+
+.issue.CLOSED
+{
+    border-left: 0.3em solid blue;
+}
+
+.issue.OPEN
+{
+    border-left: 0.3em solid red;
+}
+
+body 
+{
+    max-width: 8in;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #EEEEEE;
+}

@@ -9,8 +9,10 @@ import java.io.BufferedReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
 
 final class NativeTemplate 
 extends Object
@@ -30,7 +32,7 @@ implements Template
         return newTemplate;
     }
 
-    private final Map<String, String> mapping = new HashMap<String, String> ( );
+    private final Map<String, List<String>> mapping = new HashMap<String, List<String>> ( );
     private final String pathToTemplate;
 
     private NativeTemplate (String pathToTemplate)
@@ -41,7 +43,15 @@ implements Template
     @Override
     public Template bind (String key, String value)
     {
-        this.mapping.put(key, value);
+        List<String> values = new ArrayList<String> ( );
+        values.add(value);
+        return this.bind(key, values);
+    }
+
+    @Override
+    public Template bind (String key, List<String> values)
+    {
+        this.mapping.put(key, values);
         return this;
     }
 
@@ -67,8 +77,12 @@ implements Template
                     {
                         throw new TemplateValueMissing (this, key);
                     }
-                    String value = this.mapping.get(key);
-                    matcher.appendReplacement(stringBuffer, value);
+                    String values = "";
+                    for (String value : this.mapping.get(key))
+                    {
+                        values += value;
+                    }
+                    matcher.appendReplacement(stringBuffer, values);
                 }
                 matcher.appendTail(stringBuffer);
             }
@@ -77,7 +91,7 @@ implements Template
         } catch (FileNotFoundException e) {
             throw new TemplateFileMissing (this.pathToTemplate);
         } catch (IOException e) {
-            throw new RuntimeException ("Failed to build template.", e);
+            throw new RuntimeException ("Failed to build a template.", e);
         }
     }
 }

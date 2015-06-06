@@ -3,7 +3,7 @@ package ch.protonmail.vladyslavbond.techsupport.web.views;
 import ch.protonmail.vladyslavbond.techsupport.domain.Party;
 
 public final class FormSelectOptionView
-extends Object
+extends AbstractView
 implements View
 {
     private final String html;
@@ -30,6 +30,7 @@ implements View
     
     @Override
     public String getHTML ( )
+    throws ViewException
     {
         return new String(this.html);
     }

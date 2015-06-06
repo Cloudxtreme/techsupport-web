@@ -1,32 +1,42 @@
 package ch.protonmail.vladyslavbond.techsupport.web.views;
 
-import ch.protonmail.vladyslavbond.techsupport.domain.Party;
+import ch.protonmail.vladyslavbond.techsupport.domain.Issue;
 
-import java.util.Set;
+import ch.protonmail.vladyslavbond.techsupport.web.controllers.IssueFilteringMode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public final class HomePageView
-extends Object
+extends AbstractView
 implements View
 {
-    private final String html;
+    private final PageView pageView;
 
-    public HomePageView (Set<Party> setOfParties) throws ViewException
+    public HomePageView (List<Issue> listOfIssues, IssueFilteringMode modeSelected) throws ViewException
     {
         try
         {
-            FormIssueOpenView formView = new FormIssueOpenView (new FormSelectView ("party_id", "party_id", setOfParties));
-            Template indexTemplate = NativeTemplate.getInstance("index.html");
-            this.html = indexTemplate
-                .bind("form", formView.getHTML( ))
-                .build( );
-        } catch (TemplateValueMissing | TemplateParameterMissing | TemplateFileMissing e) {
+            List<String> contentOfBody = new ArrayList<String> ( );
+            contentOfBody.add("<main>");
+            FormIssueFilteringView formView = new FormIssueFilteringView (modeSelected);
+            contentOfBody.add(formView.getHTML( ));
+            for (Issue issue : listOfIssues)
+            {
+                IssueView issueView = new IssueView (issue);
+                contentOfBody.add(issueView.getHTML( ));
+            }
+            contentOfBody.add("</main>");
+            this.pageView = new PageView("Home page.", contentOfBody);
+        } catch (Exception e) {
             throw new ViewException (e);
         }
     }
     
     @Override
     public String getHTML ( )
+    throws ViewException
     {
-        return new String(this.html);
+        return this.pageView.getHTML( );
     }
 }
