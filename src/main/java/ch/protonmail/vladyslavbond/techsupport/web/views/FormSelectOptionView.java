@@ -11,13 +11,30 @@ implements View
     public FormSelectOptionView (String optionValue, String optionTextNode)
     throws ViewException
     {
+        this(optionValue, optionTextNode, false);
+    }
+
+    public FormSelectOptionView (String optionValue, String optionTextNode, boolean isSelected)
+    throws ViewException
+    {
         try
         {
-            Template optionTemplate = NativeTemplate.getInstance("option.html");
-            this.html = optionTemplate
-                .bind("value", optionValue)
-                .bind("textNode", optionTextNode)
-                .build( );
+            if (isSelected == true)
+            {
+                Template optionTemplate = NativeTemplate.getInstance("option.html");
+                this.html = optionTemplate
+                    .bind("value", optionValue)
+                    .bind("textNode", optionTextNode)
+                    .bind("selected", "selected")
+                    .build( );
+            } else {
+                Template optionTemplate = NativeTemplate.getInstance("option.html");
+                this.html = optionTemplate
+                    .bind("value", optionValue)
+                    .bind("textNode", optionTextNode)
+                    .bind("selected", "")
+                    .build( );
+            }
         } catch (TemplateValueMissing | TemplateParameterMissing | TemplateFileMissing e) {
             throw new ViewException (e);
         }
@@ -26,6 +43,11 @@ implements View
     public FormSelectOptionView (Party party) throws ViewException
     {
         this(party.getId( ).toString( ), party.getName( ));
+    }
+
+    public FormSelectOptionView (Party party, boolean isSelected) throws ViewException
+    {
+        this(party.getId( ).toString( ), party.getName( ), isSelected);
     }
     
     @Override

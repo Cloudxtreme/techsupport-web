@@ -51,12 +51,12 @@ public final class EntryPoint extends HttpServlet
                 pageView.writeResponse(response);
             //} catch (ViewException e) {
                 //request.setAttribute("errorMessage", e.getMessage( ));
-                //request.getRequestDispatcher(Page.ERROR.getPath( )).forward(request, response);
+                //Page.ERROR.forward(request, response);
             } catch (Exception e) {
                 throw new ServletException ("Unexpected exception occured.", e);
             }
         } else {
-            response.sendRedirect(Page.LOG_IN.getPath( ));
+            Page.LOG_IN.redirect(request, response);
         }
     }
 }

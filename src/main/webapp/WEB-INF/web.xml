@@ -17,6 +17,18 @@
     <servlet-class>ch.protonmail.vladyslavbond.techsupport.web.servlets.ErrorRequestHandler</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>DiscussRequestHandler</servlet-name>
+    <servlet-class>ch.protonmail.vladyslavbond.techsupport.web.servlets.DiscussRequestHandler</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>IssueAssignRequestHandler</servlet-name>
+    <servlet-class>ch.protonmail.vladyslavbond.techsupport.web.servlets.IssueAssignRequestHandler</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>IssueCloseRequestHandler</servlet-name>
+    <servlet-class>ch.protonmail.vladyslavbond.techsupport.web.servlets.IssueCloseRequestHandler</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>IssueOpenRequestHandler</servlet-name>
     <servlet-class>ch.protonmail.vladyslavbond.techsupport.web.servlets.IssueOpenRequestHandler</servlet-class>
   </servlet>
@@ -31,6 +43,18 @@
   <servlet-mapping>
     <servlet-name>ErrorRequestHandler</servlet-name>
     <url-pattern>/error</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DiscussRequestHandler</servlet-name>
+    <url-pattern>/discuss</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IssueAssignRequestHandler</servlet-name>
+    <url-pattern>/issue/assign</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>IssueCloseRequestHandler</servlet-name>
+    <url-pattern>/issue/close</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>IssueOpenRequestHandler</servlet-name>

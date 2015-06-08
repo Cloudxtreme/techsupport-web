@@ -16,6 +16,7 @@ implements View
         {
             Template formTemplate = NativeTemplate.getInstance("form_issue_open.html");
             this.html = formTemplate
+                .bind("action", Page.ISSUE_OPEN.getPath( ))
                 .bind("selectParties", selectParties.getHTML( ))
                 .build( );
         } catch (TemplateValueMissing | TemplateParameterMissing | TemplateFileMissing e) {

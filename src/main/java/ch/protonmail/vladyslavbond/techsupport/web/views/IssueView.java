@@ -1,6 +1,8 @@
 package ch.protonmail.vladyslavbond.techsupport.web.views;
 
 import ch.protonmail.vladyslavbond.techsupport.domain.Issue;
+import ch.protonmail.vladyslavbond.techsupport.domain.IssueAssigned;
+import ch.protonmail.vladyslavbond.techsupport.domain.IssueClosed;
 import ch.protonmail.vladyslavbond.techsupport.domain.IssueStatus;
 
 public final class IssueView
@@ -13,14 +15,29 @@ implements View
     {
         try
         {
-            this.html = NativeTemplate.getInstance("issue.html")
+            Template template = NativeTemplate.getInstance("issue.html")
                 .bind("idOfIssue", issue.getId( ).toString( ))
                 .bind("descriptionOfIssue", issue.getDescription( ).getText( ))
                 .bind("actionOfFormNamedDiscuss", Page.DISCUSS.getPath( ))
+            ;
+            if (((IssueClosed)issue).getDateClosed( ) != null)
+            {
+                template
+                .bind("statusOfIssue", IssueStatus.CLOSED.toString( ))
+                .bind("footerTextNode", "Closed by " + ((IssueClosed)issue).getClosing( ).getName( ) + " at " + ((IssueClosed)issue).getDateClosed( ).toString( ) + ".")
+                ;
+            } else if (((IssueAssigned)issue).getDateAssigned( ) != null) {
+                template
+                .bind("statusOfIssue", IssueStatus.ASSIGNED.toString( ))
+                .bind("footerTextNode", "Assigned to " + ((IssueAssigned)issue).getAssigned( ).getName( ) + " by " + ((IssueAssigned)issue).getAssignee( ).getName( ) + " at " + ((IssueAssigned)issue).getDateAssigned( ).toString( ) + ".")
+                ;
+            } else {
+                template
                 .bind("statusOfIssue", IssueStatus.OPEN.toString( ))
-                .bind("nameOfPartyIssuedBy", issue.getIssuing( ).getName( ))
-                .bind("dateIssueIssuedAt", issue.getDateIssued( ).toString( ))
-                .build( );
+                .bind("footerTextNode", "Issued by " + issue.getIssuing( ).getName( ) + " at " + issue.getDateIssued( ).toString( ) + ".")
+                ;
+            }
+            this.html = template.build( );
         } catch (TemplateParameterMissing | TemplateValueMissing | TemplateFileMissing e) {
             throw new ViewException (e);
         }

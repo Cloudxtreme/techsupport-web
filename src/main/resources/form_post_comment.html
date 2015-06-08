@@ -1,0 +1,15 @@
+<form action='${action}' method='POST'>
+    <input type='hidden' name='issue_id' value='${idOfIssue}' />
+	<fieldset>
+	    <legend>
+	    	Post new comment.
+	    </legend>
+	    <label>
+	        Body of a new comment:
+	        <textarea name='content'></textarea>
+	    </label>
+	    <label>
+	    	<input type='submit' name='action' value='Post' />
+	    </label>
+	</fieldset>
+</form>

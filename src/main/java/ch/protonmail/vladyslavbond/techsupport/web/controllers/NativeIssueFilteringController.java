@@ -84,7 +84,7 @@ implements IssueFilteringController
         switch (this.modeSelected)
         {
             case ALL:
-                return issueFactory.getInstance(this.readingParty, IssueStatus.OPEN);
+                return issueFactory.getInstance(this.readingParty, IssueStatus.UNKNOWN);
 
             case ASSIGNED:
                 return issueFactory.getInstance(this.readingParty, IssueStatus.ASSIGNED);

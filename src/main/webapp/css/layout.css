@@ -1,21 +1,27 @@
-.issue
+article
 {
-    box-shadow: 5px 5px 5px 0px #EEECCC;
+    box-shadow: 0px 0px 6px 3px #EEECCC;
     background-color: white;
 }
 
-.issue > *
+article h2
+{
+    font-size: 80%;
+    color: darkgrey;
+}
+
+article > *
 {
     margin-left: 1em;
 }
 
-.issue > footer
+article > footer
 {
     font-size: 80%;
     color: grey;
 }
 
-.issue > form
+article > form
 {
     text-align: right;
 }

@@ -21,7 +21,14 @@ implements View
             List<String> contentOfBody = new ArrayList<String> ( );
             contentOfBody.add("<aside>");
             FormIssueFilteringView formView = new FormIssueFilteringView (modeSelected);
-            contentOfBody.add(NativeTemplate.getInstance("form_issue_open.html").bind("idOfPartyIssuedBy", readingParty.getId( ).toString( )).build( ));
+            contentOfBody.add
+                (
+                    NativeTemplate.getInstance("form_issue_open.html")
+                        .bind("action", Page.ISSUE_OPEN.getPath( ))
+                        .bind("idOfPartyIssuedBy", readingParty.getId( ).toString( ))
+                        .build( )
+                )
+            ;
             contentOfBody.add(formView.getHTML( ));
             contentOfBody.add("</aside>");
             contentOfBody.add("<main>");

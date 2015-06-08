@@ -44,14 +44,14 @@ extends HttpServlet
             if (partyLoggedIn != null)
             {
                 session.setAttribute("party", partyLoggedIn);
-                response.sendRedirect(Page.HOME.getPath( ));
+                Page.HOME.redirect(request, response);
             } else {
                 throw new InputInvalidException ("Failed to log in for unknown reason.");
             }
         } catch (UnknownPartyException | WrongPasswordException | InputInvalidException e) {
             //throw new ServletException ("Failure.", e);
             request.setAttribute("errorMessage", e.getMessage( ));
-            request.getRequestDispatcher(Page.ERROR.getPath( )).forward(request, response);
+            Page.ERROR.forward(request, response);
         }
     }
 
@@ -68,10 +68,10 @@ extends HttpServlet
                 logInPageView.writeResponse(response);
             } catch (Exception e) {
                 request.setAttribute("errorMessage", e.getMessage( ));
-                request.getRequestDispatcher(Page.ERROR.getPath( )).forward(request, response);
+                Page.ERROR.forward(request, response);
             }
         } else {
-            response.sendRedirect(Page.HOME.getPath( ));
+            Page.HOME.redirect(request, response);
         }
     }
 }

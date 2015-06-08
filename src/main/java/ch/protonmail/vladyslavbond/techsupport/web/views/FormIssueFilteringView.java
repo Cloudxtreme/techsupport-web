@@ -17,6 +17,7 @@ implements View
             {
                 case ASSIGNED:
                     this.html = NativeTemplate.getInstance("form_filter_issues.html")
+                        .bind("action", Page.HOME.getPath( ))
                         .bind("selectedAll", "")
                         .bind("selectedAssigned", "selected")
                         .bind("selectedClosed", "")
@@ -27,6 +28,7 @@ implements View
 
                 case CLOSED:
                     this.html = NativeTemplate.getInstance("form_filter_issues.html")
+                        .bind("action", Page.HOME.getPath( ))
                         .bind("selectedAll", "")
                         .bind("selectedAssigned", "")
                         .bind("selectedClosed", "selected")
@@ -37,6 +39,7 @@ implements View
 
                 case OPEN:
                     this.html = NativeTemplate.getInstance("form_filter_issues.html")
+                        .bind("action", Page.HOME.getPath( ))
                         .bind("selectedAll", "")
                         .bind("selectedAssigned", "")
                         .bind("selectedClosed", "")
@@ -47,6 +50,7 @@ implements View
 
                 default:
                     this.html = NativeTemplate.getInstance("form_filter_issues.html")
+                        .bind("action", Page.HOME.getPath( ))
                         .bind("selectedAll", "selected")
                         .bind("selectedAssigned", "")
                         .bind("selectedClosed", "")

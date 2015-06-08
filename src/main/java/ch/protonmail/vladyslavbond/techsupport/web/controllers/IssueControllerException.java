@@ -12,4 +12,9 @@ extends Exception
 	{
 		super(message);
 	}
+
+	public IssueControllerException (Throwable cause)
+	{
+		this("Issue controller failed to process a request.", cause);
+	}
 }

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+  <Environment name='contextPath' type='java.lang.String' value='http://localhost:8080/techsupport-web/'/>
+</Context>

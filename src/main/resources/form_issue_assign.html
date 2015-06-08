@@ -1,0 +1,16 @@
+<form method='POST' action='${action}'>
+  <input type='hidden' name='issue_id' value='${idOfIssue}' />
+  <input type='hidden' name='party_assigning_id' value='${idOfPartyAssignedBy}' />
+  <fieldset>
+    <legend>
+      Assign a party to an issue.
+    </legend>
+      <label for='party_assigned_id'>
+        Party to be assigned to an issue:
+        <select id='party_assigned_id' name='party_assigned_id'>
+          ${options}
+        </select>
+      </label>
+    <input name='action' type='submit' value='Assign' />
+  </fieldset>
+</form>
